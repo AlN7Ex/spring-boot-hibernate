@@ -37,7 +37,7 @@ public class Book {
     @OneToMany(cascade = CascadeType.ALL)
     private List<StorageBook> storageBook;
 
-    @OneToMany(mappedBy = "book_id", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
     private List<OrderDetails> orderDetails;
 
     @Column(nullable = false)

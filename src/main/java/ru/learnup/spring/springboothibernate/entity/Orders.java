@@ -28,7 +28,7 @@ public class Orders {
     @Column
     private Integer purchase_amount;
 
-    @OneToMany(mappedBy = "orders_id", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL)
     private List<OrderDetails> orderDetails;
 
 }

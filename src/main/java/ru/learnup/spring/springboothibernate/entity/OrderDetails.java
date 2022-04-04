@@ -21,11 +21,11 @@ public class OrderDetails implements Serializable{
     @Id
     @ManyToOne
     @JoinColumn(name = "orders_id")
-    private Orders orders_id;
+    private Orders orders;
 
     @ManyToOne
     @JoinColumn(name = "book_id", nullable = false)
-    private Book book_id;
+    private Book book;
 
     @Column(nullable = false)
     private Integer amount;
