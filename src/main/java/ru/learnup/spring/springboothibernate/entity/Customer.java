@@ -1,5 +1,9 @@
 package ru.learnup.spring.springboothibernate.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -7,6 +11,9 @@ import java.util.List;
  * Покупатель - ид, ФИО, дата рождения
  */
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(schema = "book_shop")
 public class Customer {
@@ -19,12 +26,12 @@ public class Customer {
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Orders> orders;
 
-    @Column
+    @Column(nullable = false)
     private String name;
 
-    @Column
+    @Column(nullable = false)
     private String surname;
 
-    @Column
+    @Column(nullable = false)
     private String birth;
 }

@@ -3,6 +3,7 @@ package ru.learnup.spring.springboothibernate.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.relational.core.sql.In;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -21,10 +22,10 @@ import java.util.List;
 public class StorageBook implements Serializable {
 
     @Id
-    @OneToOne(optional = false)
-    @JoinColumn(name = "book_id", nullable = false)
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "book_id", nullable = false, unique = true)
     private Book book;
 
-    @Column
+    @Column(nullable = false)
     private int amount;
 }

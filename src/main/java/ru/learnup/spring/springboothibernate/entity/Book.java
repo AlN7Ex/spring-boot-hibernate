@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Книга содержит информацию:
@@ -26,25 +27,25 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer book_id;
 
-    @Column
+    @Column(nullable = false)
     private String title;
 
     @ManyToOne
     @JoinColumn(name = "author_id")
-    private Author author;
+    private Author author_id;
 
-    @OneToOne(mappedBy = "book")
-    private StorageBook storageBook;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<StorageBook> storageBook;
 
-    @OneToOne(mappedBy = "book")
-    private OrderDetails orderDetails;
+    @OneToMany(mappedBy = "book_id", cascade = CascadeType.ALL)
+    private List<OrderDetails> orderDetails;
 
-    @Column
+    @Column(nullable = false)
     private String publish_year;
 
-    @Column
+    @Column(nullable = false)
     private Integer pages;
 
-    @Column
+    @Column(nullable = false)
     private Integer price;
 }

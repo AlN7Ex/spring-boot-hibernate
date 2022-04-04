@@ -29,6 +29,8 @@ public class Author {
     private String surname;
 
     // У одного автора может быть несколько произведений
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
+    // Думаю, тут можно сделать отношение многие ко многим через дополнительную табличу
+    // Но пока оставил так
+    @OneToMany(mappedBy = "author_id", cascade = CascadeType.ALL)
     private List<Book> book;
 }

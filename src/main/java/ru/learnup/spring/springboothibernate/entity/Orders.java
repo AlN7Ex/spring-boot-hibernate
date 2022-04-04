@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Заказ - ид покупателя, ид заказа, сумма покупки
@@ -21,14 +22,13 @@ public class Orders {
     private Integer orders_id;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id")
+    @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
     @Column
     private Integer purchase_amount;
 
-    // У одного заказа - одна дополнительная информация о нём
-    @OneToOne(mappedBy = "orders", cascade = CascadeType.ALL)
-    private OrderDetails orderDetails;
+    @OneToMany(mappedBy = "orders_id", cascade = CascadeType.ALL)
+    private List<OrderDetails> orderDetails;
 
 }

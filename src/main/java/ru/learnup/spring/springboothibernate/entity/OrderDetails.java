@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Детали заказа - ид заказа, ид книги, количество, цена
@@ -17,20 +16,20 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(schema = "book_shop")
-public class OrderDetails implements Serializable {
+public class OrderDetails implements Serializable{
 
     @Id
-    @OneToOne(optional = false)
-    @JoinColumn(name = "orders_id", nullable = false)
-    private Orders orders;
+    @ManyToOne
+    @JoinColumn(name = "orders_id")
+    private Orders orders_id;
 
-    @OneToOne
-    @JoinColumn(name = "book_id")
-    private Book book;
+    @ManyToOne
+    @JoinColumn(name = "book_id", nullable = false)
+    private Book book_id;
 
-    @Column
+    @Column(nullable = false)
     private Integer amount;
 
-    @Column
+    @Column(nullable = false)
     private Integer price;
 }
