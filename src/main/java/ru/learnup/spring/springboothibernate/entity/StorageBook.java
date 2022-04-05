@@ -3,11 +3,9 @@ package ru.learnup.spring.springboothibernate.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.relational.core.sql.In;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Книжный склад хранит информацию об остатках книг
@@ -22,8 +20,8 @@ import java.util.List;
 public class StorageBook implements Serializable {
 
     @Id
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "book_id", nullable = false, unique = true)
+    @OneToOne
+    @JoinColumn(name = "book_id", nullable = false)
     private Book book;
 
     @Column(nullable = false)

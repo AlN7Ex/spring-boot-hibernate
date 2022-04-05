@@ -25,7 +25,7 @@ public class Orders {
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
-    @Column
+    @Column(nullable = false)
     private Integer purchase_amount;
 
     @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL)

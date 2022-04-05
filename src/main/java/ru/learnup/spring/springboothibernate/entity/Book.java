@@ -34,8 +34,8 @@ public class Book {
     @JoinColumn(name = "author_id")
     private Author author_id;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<StorageBook> storageBook;
+    @OneToOne(mappedBy = "book", cascade = CascadeType.ALL)
+    private StorageBook storageBook;
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
     private List<OrderDetails> orderDetails;
